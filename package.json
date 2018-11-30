@@ -3,6 +3,9 @@
 	"version": "1.0.0",
 	"description": "Hapi plugin wrapper",
 	"main": "source/index.js",
+	"publishConfig": {
+		"@magneds:registry": "https://registry.npmjs.org"
+	},
 	"scripts": {
 		"test": "node_modules/.bin/lab -vclr",
 		"check-style": "node_modules/.bin/eslint {source,test}/**/*.js && echo 'No problems found'",
