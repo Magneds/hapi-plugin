@@ -101,7 +101,12 @@ class HapiPlugin {
 	 *  @memberof HapiPlugin
 	 */
 	get dependencies() {
-		return this.config.dependencies || [];
+		const { config } = this;
+
+		if (!('dependencies' in config)) {
+			config.dependencies = [];
+		}
+		return config.dependencies;
 	}
 
 	/**
@@ -119,7 +124,13 @@ class HapiPlugin {
 	 *  @memberof HapiPlugin
 	 */
 	get options() {
-		return this.config.options || {};
+		const { config } = this;
+
+		if (!('options' in config)) {
+			config.options = {};
+		}
+
+		return config.options;
 	}
 
 	/**
@@ -128,7 +139,9 @@ class HapiPlugin {
 	 *  @memberof HapiPlugin
 	 */
 	set options(value) {
-		this.config.options = value || {};
+		const { options } = this.config;
+
+		this.config.options = { ...options, ...(value || {}) };
 	}
 
 	/**
@@ -137,7 +150,13 @@ class HapiPlugin {
 	 *  @memberof HapiPlugin
 	 */
 	get routes() {
-		return this.config.routes;
+		const { config } = this;
+
+		if (!('routes' in config)) {
+			config.routes = {};
+		}
+
+		return config.routes;
 	}
 
 	/**
@@ -146,7 +165,9 @@ class HapiPlugin {
 	 *  @memberof HapiPlugin
 	 */
 	set routes(value) {
-		this.config.routes = value;
+		const { routes } = this.config;
+
+		this.config.routes = { ...routes, ...(value || {}) };
 	}
 
 	/**
@@ -155,7 +176,7 @@ class HapiPlugin {
 	 *  @memberof HapiPlugin
 	 */
 	get prefix() {
-		return (this.routes || {}).prefix;
+		return this.routes.prefix;
 	}
 
 	/**
@@ -184,7 +205,7 @@ class HapiPlugin {
 		} = this;
 		const dependencies = depends.length ? depends : undefined;
 
-		if (routes || options) {
+		if (Object.keys(routes).length || Object.keys(options).length) {
 			return {
 				plugin: { name, version, dependencies, register },
 				options,

@@ -4,8 +4,9 @@
 	"description": "Hapi plugin wrapper",
 	"main": "source/index.js",
 	"scripts": {
-		"check-style": "node_modules/.bin/eslint source/**/*.js && echo 'No problems found'",
-		"fix-style": "node_modules/.bin/eslint --fix source/**/*.js"
+		"test": "node_modules/.bin/lab -vclr",
+		"check-style": "node_modules/.bin/eslint {source,test}/**/*.js && echo 'No problems found'",
+		"fix-style": "node_modules/.bin/eslint --fix {source,test}/**/*.js"
 	},
 	"keywords": [
 		"magneds",
@@ -14,9 +15,11 @@
 	"author": "Rogier Spieker <rogier.spieker@magneds.com>",
 	"license": "UNLICENSED",
 	"devDependencies": {
+		"code": "^5.2.4",
 		"eslint": "^5.9.0",
 		"eslint-config-prettier": "^3.3.0",
 		"eslint-plugin-prettier": "^3.0.0",
+		"lab": "^18.0.0",
 		"prettier": "^1.15.3"
 	}
 }
