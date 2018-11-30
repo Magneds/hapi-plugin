@@ -48,21 +48,25 @@ experiment('Default settings (unconfigured)', () => {
 		expect(plugin.prefix).to.be.undefined();
 	});
 
-	test('export is an object reflecting the confguration', () => {
-		const { export: exported } = plugin;
+	test('vhost is undefined', () => {
+		expect(plugin.vhost).to.be.undefined();
+	});
 
-		expect(exported).to.be.object();
+	test('exports is an object reflecting the confguration', () => {
+		const { exports } = plugin;
 
-		expect(exported).to.contain('name');
-		expect(exported.name).to.be.undefined();
+		expect(exports).to.be.object();
 
-		expect(exported).to.contain('version');
-		expect(exported.version).to.be.undefined();
+		expect(exports).to.contain('name');
+		expect(exports.name).to.be.undefined();
 
-		expect(exported).to.contain('dependencies');
-		expect(exported.dependencies).to.be.undefined();
+		expect(exports).to.contain('version');
+		expect(exports.version).to.be.undefined();
 
-		expect(exported).to.contain('register');
-		expect(exported.register).to.be.function([]);
+		expect(exports).to.contain('dependencies');
+		expect(exports.dependencies).to.be.undefined();
+
+		expect(exports).to.contain('register');
+		expect(exports.register).to.be.function([]);
 	});
 });

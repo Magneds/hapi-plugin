@@ -12,7 +12,8 @@ const configured = {
 	dependencies: ['járngreipr'],
 	options: { foo: 'bar', baz: 'qux' },
 	routes: {
-		prefix: '/prefix'
+		prefix: '/prefix',
+		vhost: 'my-vhost'
 	}
 };
 
@@ -134,12 +135,36 @@ experiment('Configure', () => {
 			register: configured.register,
 			dependencies: configured.dependencies,
 			options: configured.options,
+			routes: { prefix: configured.routes.prefix }
+		});
+	});
+
+	test('vhost value', () => {
+		expect(plugin.config).to.equal({
+			name: configured.name,
+			version: configured.version,
+			register: configured.register,
+			dependencies: configured.dependencies,
+			options: configured.options,
+			routes: { prefix: configured.routes.prefix }
+		});
+		expect(plugin.vhost).to.be.undefined();
+
+		plugin.vhost = configured.routes.vhost;
+
+		expect(plugin.prefix).to.equal(configured.routes.prefix);
+		expect(plugin.config).to.equal({
+			name: configured.name,
+			version: configured.version,
+			register: configured.register,
+			dependencies: configured.dependencies,
+			options: configured.options,
 			routes: configured.routes
 		});
 	});
 
-	test('export value', () => {
-		expect(plugin.export).to.equal({
+	test('exports value', () => {
+		expect(plugin.exports).to.equal({
 			plugin: {
 				name: configured.name,
 				version: configured.version,

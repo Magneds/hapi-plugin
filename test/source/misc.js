@@ -40,7 +40,7 @@ experiment('Miscellaneous', () => {
 		expect(plugin.routes).to.equal({});
 	});
 
-	test('override export', () => {
+	test('override exports', () => {
 		const register = async () => {};
 		const plugin = new HapiPlugin({
 			name: 'gungnir',
@@ -48,7 +48,7 @@ experiment('Miscellaneous', () => {
 			register
 		});
 
-		expect(plugin.export).to.equal({
+		expect(plugin.exports).to.equal({
 			name: 'gungnir',
 			version: '3.2.1',
 			dependencies: undefined,
@@ -57,7 +57,7 @@ experiment('Miscellaneous', () => {
 
 		plugin.options = { foo: 'bar' };
 
-		expect(plugin.export).to.equal({
+		expect(plugin.exports).to.equal({
 			plugin: {
 				name: 'gungnir',
 				version: '3.2.1',
@@ -70,7 +70,7 @@ experiment('Miscellaneous', () => {
 
 		plugin.prefix = '/prefix';
 
-		expect(plugin.export).to.equal({
+		expect(plugin.exports).to.equal({
 			plugin: {
 				name: 'gungnir',
 				version: '3.2.1',

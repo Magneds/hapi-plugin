@@ -185,7 +185,25 @@ class HapiPlugin {
 	 *  @memberof HapiPlugin
 	 */
 	set prefix(value) {
-		this.routes = Object.assign(this.routes, { prefix: value });
+		this.routes = { ...this.routes, prefix: value };
+	}
+
+	/**
+	 *  Obtain the routes.vhost value
+	 *
+	 *  @memberof HapiPlugin
+	 */
+	get vhost() {
+		return this.routes.vhost;
+	}
+
+	/**
+	 *  Set the routes.vhost value
+	 *
+	 *  @memberof HapiPlugin
+	 */
+	set vhost(value) {
+		this.routes = { ...this.routes, vhost: value };
 	}
 
 	/**
@@ -194,7 +212,7 @@ class HapiPlugin {
 	 *  @readonly
 	 *  @memberof HapiPlugin
 	 */
-	get export() {
+	get exports() {
 		const {
 			name,
 			version,
