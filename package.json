@@ -16,7 +16,7 @@
 		"hapi"
 	],
 	"author": "Rogier Spieker <rogier.spieker@magneds.com>",
-	"license": "UNLICENSED",
+	"license": "MIT",
 	"devDependencies": {
 		"code": "^5.2.4",
 		"eslint": "^5.9.0",
