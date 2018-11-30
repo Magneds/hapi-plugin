@@ -1,6 +1,6 @@
 {
 	"name": "@magneds/hapi-plugin",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"description": "Hapi plugin wrapper",
 	"main": "source/index.js",
 	"scripts": {
