@@ -1,12 +1,22 @@
 {
-  "name": "@magneds/hapi-plugin",
-  "version": "0.0.0",
-  "description": "Hapi plugin wrapper",
-  "main": "source/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "Rogier Spieker <rogier.spieker@magneds.com>",
-  "license": "UNLICENSED"
+	"name": "@magneds/hapi-plugin",
+	"version": "0.0.0",
+	"description": "Hapi plugin wrapper",
+	"main": "source/index.js",
+	"scripts": {
+		"check-style": "node_modules/.bin/eslint source/**/*.js && echo 'No problems found'",
+		"fix-style": "node_modules/.bin/eslint --fix source/**/*.js"
+	},
+	"keywords": [
+		"magneds",
+		"hapi"
+	],
+	"author": "Rogier Spieker <rogier.spieker@magneds.com>",
+	"license": "UNLICENSED",
+	"devDependencies": {
+		"eslint": "^5.9.0",
+		"eslint-config-prettier": "^3.3.0",
+		"eslint-plugin-prettier": "^3.0.0",
+		"prettier": "^1.15.3"
+	}
 }

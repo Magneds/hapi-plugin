@@ -2,7 +2,7 @@ const storage = new WeakMap();
 
 class HapiPlugin {
 	constructor(config = {}) {
-		storage.set(this, { config })
+		storage.set(this, { config });
 	}
 
 	get config() {
@@ -10,7 +10,6 @@ class HapiPlugin {
 
 		return config;
 	}
-
 
 	get name() {
 		const { name } = this.config;
@@ -21,7 +20,6 @@ class HapiPlugin {
 	set name(value) {
 		this.config.name = value;
 	}
-
 
 	get version() {
 		const { version } = this.config;
@@ -35,9 +33,13 @@ class HapiPlugin {
 
 	get register() {
 		const { register } = this.config;
-		const invoke = register ? register : async () => {
-			throw new Error(`HapiPlugin "${this.name}" has no register method`);
-		};
+		const invoke = register
+			? register
+			: async () => {
+					throw new Error(
+						`HapiPlugin "${this.name}" has no register method`
+					);
+			  };
 
 		return invoke;
 	}
@@ -75,18 +77,25 @@ class HapiPlugin {
 	}
 
 	set prefix(value) {
-		this.routes = { ...(this.routes || {}), prefix: value };
+		this.routes = Object.assign(this.routes, { prefix: value });
 	}
 
 	get export() {
-		const { name, version, dependencies: depends, options, register, routes } = this;
+		const {
+			name,
+			version,
+			dependencies: depends,
+			options,
+			register,
+			routes
+		} = this;
 		const dependencies = depends.length ? depends : undefined;
 
 		if (routes || options) {
 			return {
 				plugin: { name, version, dependencies, register },
 				options,
-				routes,
+				routes
 			};
 		}
 
